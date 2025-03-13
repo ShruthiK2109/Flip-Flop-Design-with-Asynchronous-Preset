@@ -1,0 +1,81 @@
+--------------------------------------------------------------------------------
+-- Company:   The University of Texas at Dallas
+-- Engineer:  Shruthi Krishnamithran ( NET ID: skm210012 )
+-- Create Date:   10:51:31 03/08/2023
+-- Design Name:   flipflop_Vhdl_testbench
+-- Module Name:   /home/eng/s/skm210012/Adl_Midterm/Adl_Vhdl_tb.vhd
+-- Project Name:  Adl_Midterm
+-- Target Device:  
+-- Tool versions:  
+-- Description:   
+-- 
+-- VHDL Test Bench Created by ISE for module: Adl_Vhdl
+-- 
+-- Dependencies:
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+--
+-- Notes: 
+-- This testbench has been automatically generated using types std_logic and
+-- std_logic_vector for the ports of the unit under test.  Xilinx recommends
+-- that these types always be used for the top-level I/O of a design in order
+-- to guarantee that the testbench will bind correctly to the post-implementation 
+-- simulation model.
+--------------------------------------------------------------------------------
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--USE ieee.numeric_std.ALL;
+ 
+entity Adl_Vhdl_tb is
+end Adl_Vhdl_tb;
+
+architecture Behavioral of Adl_Vhdl_tb is
+
+    component Adl_Vhdl
+        port (clk, preset, d : in STD_LOGIC;
+              q, qbar : out STD_LOGIC);
+    end component;
+
+    signal clk, preset, d : STD_LOGIC := '0';
+    signal q, qbar : STD_LOGIC;
+
+begin
+
+    dut : Adl_Vhdl
+        port map (clk => clk, preset => preset, d => d, q => q, qbar => qbar);
+
+    clk_process: process
+    begin
+        clk <= '0';
+        wait for 5 ns;
+        clk <= '1';
+        wait for 5 ns;
+    end process;
+
+    stimulus : process
+    begin
+        wait for 10 ns;
+        preset <= '1';
+        d <= '0';
+        wait for 10 ns;
+        preset <= '0';
+        wait for 10 ns;
+        preset <= '1';
+        wait for 10 ns;
+        d <= '1';
+        wait for 10 ns;
+        d <= '0';
+        wait for 10 ns;
+        wait for 10 ns;
+        wait for 10 ns;
+        wait for 10 ns;
+        wait;
+    end process;
+
+end Behavioral;
+

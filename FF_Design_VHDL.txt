@@ -1,0 +1,49 @@
+----------------------------------------------------------------------------------
+-- Company:  The University of Texas at Dallas
+-- Engineer: Shruthi Krishnamithran ( NET ID: skm210012 )
+-- 
+-- Create Date:    10:45:12 03/08/2023 
+-- Design Name:    flipflop_Vhdl_code
+-- Module Name:    Adl_Vhdl - Behavioral 
+-- Project Name:   Adl_Midterm
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity Adl_Vhdl is
+    port (clk, preset, d : in STD_LOGIC;
+          q, qbar : out STD_LOGIC);
+end Adl_Vhdl;
+
+architecture Behavioral of Adl_Vhdl is
+begin
+    process(clk, preset)
+    begin
+        if (preset = '0') then
+            q <= '1';
+            qbar <= '0';
+        elsif (rising_edge(clk)) then
+            q <= d;
+            qbar <= not d;
+        end if;
+    end process;
+end Behavioral;

@@ -1,0 +1,50 @@
+`timescale 1ns / 1ps
+
+////////////////////////////////////////////////////////////////////////////////
+// Company: The University of Texas at Dallas
+// Engineer: Shruthi Krishnamithran ( NET ID: skm210012 )
+//
+// Create Date:   13:44:54 03/08/2023
+// Design Name:   flipflop_Verilog_testbench
+// Module Name:   /home/eng/s/skm210012/Adl_Midterm/Adl_verilog_tb.v
+// Project Name:  Adl_Midterm
+// Target Device:  
+// Tool versions:  
+// Description: 
+//
+// Verilog Test Fixture created by ISE for module: Adl_verilog
+//
+// Dependencies:
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+////////////////////////////////////////////////////////////////////////////////
+
+module Adl_verilog_tb;
+  reg clk, preset, d;
+  wire q, qbar;
+
+  Adl_verilog dut(.clk(clk), .preset(preset), .d(d), .q(q), .qbar(qbar));
+
+  initial begin
+    clk <= 0;
+    forever #5 clk <= ~clk;
+  end
+
+  initial begin
+    preset <= 1;
+    d <= 0;
+    #10 preset <= 0;
+    #5 d <= 1;
+    #5 d <= 0;
+    #5 d <= 1;
+    #5 d <= 0;
+    #5 $finish;
+  end
+
+  always @(posedge clk) begin
+    $display("d=%b, q=%b, qbar=%b", d, q, qbar);
+  end
+endmodule
