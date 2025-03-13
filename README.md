@@ -1,1 +1,2 @@
 # Flip-Flop-Design-with-Asynchronous-Preset
+This project implements a flip-flop with an asynchronous preset input in both Verilog and VHDL. The flip-flop operates on the rising edge of the clock signal and features both Q and Qbar outputs. The preset input is independent of the clock and forces the output to a predefined state when activated. The repository includes behavioral models for both Verilog and VHDL, along with testbenches to verify the functionality of the design.
